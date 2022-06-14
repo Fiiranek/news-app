@@ -2,11 +2,9 @@ import { useNavigation } from "@react-navigation/native";
 // import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
 import {
-  SafeAreaView,
   ScrollView,
   Text,
   View,
-  ListRenderItemInfo,
   Dimensions,
   TouchableOpacity,
 } from "react-native";
@@ -18,9 +16,13 @@ type Props = {
   message: Message;
 };
 
+type Nav = {
+  navigate: (value: string, {}) => void;
+};
+
 export default function NewsTile({ message }: Props) {
   // export default function NewsTile({ message}) {
-  const navigation = useNavigation();
+  const navigation = useNavigation<Nav>();
   const [height, setHeight] = useState<number>(0);
   return (
     <TouchableOpacity
@@ -32,38 +34,34 @@ export default function NewsTile({ message }: Props) {
     >
       <View style={styles.newsTile}>
         <ScrollView>
-          <Text style={styles.newsTileTitle}>{message.title}</Text>
-          <View style={styles.newsInfo}>
-            <Text style={styles.newsTileDate}>
-              {Utils.formatDate(message.createDate)}
-            </Text>
-            <Text style={styles.newsTileDate}>{message.author.fullName}</Text>
+          <View style={styles.newsTileTop}>
+            <Text style={styles.newsTileTitle}>{message.title}</Text>
+            <View style={styles.newsInfo}>
+              <Text style={styles.newsTileDate}>
+                {Utils.formatDate(message.createDate)}
+              </Text>
+              <Text style={styles.newsTileDate}>{message.author.fullName}</Text>
+            </View>
           </View>
-
-          <View style={styles.newsBorder}></View>
 
           <AutoHeightWebView
             style={{
               width: Dimensions.get("window").width,
-              marginTop: 10,
+              marginVertical: 10,
               height: height,
             }}
-            // customScript={`document.body.style.background = 'lightyellow';`}
             onSizeUpdated={(size) => {
               setHeight(size.height);
             }}
             source={{
               html: `
-            <body style='font-size:${1}rem'>
+            <body style='font-size:${1}rem;padding:10'>
               ${message.content.toString()}
             </body>
             `,
             }}
             scalesPageToFit={false}
             viewportContent={"width=device-width, user-scalable=no"}
-            /*ł
-    other react-native-webview props
-    */
           />
         </ScrollView>
       </View>

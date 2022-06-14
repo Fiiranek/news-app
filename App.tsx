@@ -11,7 +11,13 @@ export default function Root() {
     <NavigationContainer>
       <NativeBaseProvider>
         <Stack.Navigator initialRouteName="News">
-          <Stack.Screen name="News" component={News} />
+          <Stack.Screen
+            name="News"
+            component={News}
+            options={{
+              headerTitle: "Wiadomości",
+            }}
+          />
           <Stack.Screen name="NewsDetails" component={NewsDetails} />
         </Stack.Navigator>
       </NativeBaseProvider>

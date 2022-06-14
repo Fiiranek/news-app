@@ -19,11 +19,20 @@ export default class Utils {
   };
 
   static formatDate = (date: string): string => {
+    let timeStr: string = moment(date).format("HH:mm");
     let dateStr: string = moment(new Date(date))
       .format("DD MM YYYY")
       .toString();
     let monthNumber: number = parseInt(dateStr.split(" ")[1]);
     let month: string = MONTHS[monthNumber - 1];
-    return dateStr.split(" ")[0] + " " + month + " " + dateStr.split(" ")[2];
+    return (
+      dateStr.split(" ")[0] +
+      " " +
+      month +
+      " " +
+      dateStr.split(" ")[2] +
+      ", " +
+      timeStr
+    );
   };
 }

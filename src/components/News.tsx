@@ -11,7 +11,7 @@ import {
 import styles from "../styles/News.styles";
 import NewsTile from "./NewsTile";
 import APIManager from "../services/APIManager";
-
+import Error from "../components/Error";
 export default function News() {
   const renderItem: ListRenderItem<Message> = ({ item }) => (
     <NewsTile message={item} key={item.id} />
@@ -75,7 +75,7 @@ export default function News() {
       {isLoading ? (
         <ActivityIndicator size={"large"} color={"black"} />
       ) : isError ? (
-        <View>{<Text>Error</Text>}</View>
+        <Error />
       ) : (
         <View>
           <FlatList

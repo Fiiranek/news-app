@@ -10,39 +10,36 @@ export default StyleSheet.create({
   newsTile: {
     marginVertical: 10,
     marginHorizontal: 10,
-    borderRadius: 5,
+    borderRadius: 10,
     backgroundColor: "white",
+  },
+  newsTileTop: {
+    backgroundColor: "#555",
     padding: 10,
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
   },
   newsBorder: {
     marginVertical: 10,
     backgroundColor: "#ddd",
-    height: 2,
+    height: 1,
   },
   newsInfo: {
     flexDirection: "row",
     justifyContent: "space-between",
   },
   newsTileTitle: {
-    color: "darkblue",
     fontWeight: "normal",
     fontSize: 18,
+    color: "white",
   },
   newsTileDate: {
     marginVertical: 5,
-    color: "black",
-
+    color: "#eee",
     fontSize: 14,
   },
-
-  newsDetails: {
+  newsDetailsContainer: {
     backgroundColor: "white",
-    flex: 1,
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "center",
     padding: 10,
   },
-
-  comment: {},
 });

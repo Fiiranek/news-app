@@ -1,28 +1,45 @@
 import { View, Text } from "react-native";
 import React from "react";
-import styles from "../styles/News.styles";
+import styles from "../styles/CommentTile.styles";
+import { Icon } from "react-native-elements";
+import Utils from "../Utils";
+
 type Props = {
   comment: MessageComment;
-  // navigation:NativeStackScreenProps["navigation"];
 };
 
-// export default function CommentTile({ comment }: Props) {
-export default function CommentTile() {
-  const comment = {
-    id: 6651,
-    content: "Ja też nigdzie się nie wybieram ",
-    author: {
-      id: 10003,
-      fullName: "Jadwiga Marcinkowska",
-    },
-    createDate: "2022-06-13T12:55:59.7602697Z",
-    numberOfLikes: 10,
-    isLiked: false,
-  };
-
+export default function CommentTile({ comment }: Props) {
   return (
-    <View style={styles.comment}>
-      <Text>{comment.content}</Text>
+    <View style={styles.container}>
+      <View style={styles.top}>
+        <Icon
+          name="person"
+          raised={true}
+          color={"#555"}
+          reverseColor={"white"}
+          size={20}
+          reverse={true}
+        />
+        <View style={styles.authorData}>
+          <Text style={styles.author}>{comment.author.fullName}</Text>
+          <Text style={styles.date}>
+            {Utils.formatDate(comment.createDate)}
+          </Text>
+        </View>
+      </View>
+      <View style={styles.content}>
+        <Text style={styles.contentText}>{comment.content}</Text>
+      </View>
+      <View style={styles.bottom}>
+        <Icon
+          name="thumb-up"
+          size={15}
+          color={comment.isLiked ? "blue" : "black"}
+        />
+        <Text style={styles.likeCount}>
+          {comment.numberOfLikes.toString()} Likes
+        </Text>
+      </View>
     </View>
   );
 }
