@@ -16,16 +16,11 @@ import styles from "../styles/News.styles";
 import Utils from "../Utils";
 type Props = {
   message: Message;
-  // navigation:NativeStackScreenProps["navigation"];
 };
 
 export default function NewsTile({ message }: Props) {
   // export default function NewsTile({ message}) {
   const navigation = useNavigation();
-
-  useEffect(() => {
-    console.log(navigation);
-  }, []);
   const [height, setHeight] = useState<number>(0);
   return (
     <TouchableOpacity
@@ -55,7 +50,6 @@ export default function NewsTile({ message }: Props) {
             }}
             // customScript={`document.body.style.background = 'lightyellow';`}
             onSizeUpdated={(size) => {
-              console.log(size.height);
               setHeight(size.height);
             }}
             source={{
