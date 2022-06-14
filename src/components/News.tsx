@@ -5,7 +5,6 @@ import {
   ListRenderItem,
   ActivityIndicator,
   View,
-  Text,
   RefreshControl,
 } from "react-native";
 import styles from "../styles/News.styles";

@@ -1,5 +1,4 @@
 import { useNavigation } from "@react-navigation/native";
-// import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
 import {
   ScrollView,
@@ -9,7 +8,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 import AutoHeightWebView from "react-native-autoheight-webview";
-import { WebView } from "react-native-webview";
 import styles from "../styles/News.styles";
 import Utils from "../Utils";
 type Props = {
